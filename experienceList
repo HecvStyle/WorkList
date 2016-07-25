@@ -1,0 +1,2 @@
+###一些常见的问题列表，持续积累
+##### 1. UIButton 使用xib 创建，频繁改变tittle 时候闪烁。将Button的type改为 custom。
