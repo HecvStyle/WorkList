@@ -7,3 +7,12 @@
 
 ##### 4.cocoapod 不更新本地的库，只更新新添加的库命令：    
 `pod update --verbose --no-repo-update`
+
+##### 5. 使用AFNetworking 在做网络提交的时候，默认使用 form 方式提交，这样在请求体中，如果有数组会变成类似于这样的格式 
+`book_name[]=一年级&book_name[]=上册`
+如果数组中还包含有对象 例如 `data =[{questionId: 1467709995fckkjd, questionTypeId:1, subject:2}]` 将转换成 `data[][questionId]=1467709995fckkjd&data[][questionTypeId]=1&data[][subject]=2`   
+而后台期望的方式却是json提交，所以这个问题解决方案就是改为json提交，上边转换后的格式就变成了类似的 ` "coursewares": [{
+		"id": "1471939616ytscrb",
+		"product_id": "1471940034afigyt"
+	}]`
+	
