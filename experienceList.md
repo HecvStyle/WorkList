@@ -14,5 +14,6 @@
 而后台期望的方式却是json提交，所以这个问题解决方案就是改为json提交，上边转换后的格式就变成了类似的 ` "coursewares": [{
 		"id": "1471939616ytscrb",
 		"product_id": "1471940034afigyt"
-	}]`
+	}]`    
 	
+##### 6.使用zsh作为shell终端时候，环境变量 .bash_profile 不会加载，而是会加载 .zshrc 这个配置文件，所以我们依然可以在 .bash_profile 配置环境变量，只是在 .zshrc 配置文件中使用 source命令，主动调用 . bash_profile ，使其设置的环境变量生效即可。
