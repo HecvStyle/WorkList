@@ -18,4 +18,5 @@
 	
 ##### 6.使用zsh作为shell终端时候，环境变量 .bash_profile 不会加载，而是会加载 .zshrc 这个配置文件，所以我们依然可以在 .bash_profile 配置环境变量，只是在 .zshrc 配置文件中使用 source命令，主动调用 . bash_profile ，使其设置的环境变量生效即可。
 
-##### 7.使用Jenkins做自动就见，需要去掉“自动创建scheme”选项，因为Jenkins的Xcode插件并不会自动帮你创建，所以在构建过程中，出现scheme为空的情况
+##### 7.使用Jenkins做自动集成，需要去掉“自动创建scheme”选项，因为Jenkins的Xcode插件并不会自动帮你创建，所以在构建过程中，出现scheme为空的情况
+
