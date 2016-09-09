@@ -20,3 +20,6 @@
 
 ##### 7.使用Jenkins做自动集成，需要去掉“自动创建scheme”选项，因为Jenkins的Xcode插件并不会自动帮你创建，所以在构建过程中，出现scheme为空的情况
 
+##### 8. 设置父视图透明而子视图不透明的处理
+ `self.view.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.7f];` 
+ 这句代码只是针对了view 的颜色给出了透明度，而不是针对view这个整体
