@@ -23,3 +23,6 @@
 ##### 8. 设置父视图透明而子视图不透明的处理
  `self.view.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.7f];` 
  这句代码只是针对了view 的颜色给出了透明度，而不是针对view这个整体
+ 
+##### 9.storyboard 自定义cell问题。
+在**storyboard** 中对collectioncell做自定义，在cell中设置 Identifier 后不需要在对cell注册，以下代码不再需要  `self.collectionView!.registerClass(StudentShowcaseCell.self, forCellWithReuseIdentifier: reuseIdentifier)`，否则将无法按照storyboard中设计的样式来初始化
