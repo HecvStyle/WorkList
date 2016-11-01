@@ -29,3 +29,6 @@
 
 ##### 10.关于线程取消的问题
 调用NSOperation 或者thread的 cancel方法， 并不是严格意义上的线程的取消，只是把该线程的cannelled属性标记为YES状态来表示该线程即将要退出。要实现取消功能，我们需要在线程的main函数中定期检查isCancelled状态来判断是否需要退出，当isCancelled为YES的时候，我们手动退出，如果我们没有在main中检查isCancelled状态，那么调用-(void)cancel;方法将毫无意义。NSOperation 是抽象类！！！
+
+##### 11. 使用storyboard 搭建UI连接 action的时候，出现 “Could not insert new outlet connection: Could not find any information for the class named”问题    
+可以clear 一下工程，然后去删掉Derived Data，或者删除对应类在项目中的引用，然后重新添加类文件。
