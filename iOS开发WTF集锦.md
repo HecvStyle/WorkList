@@ -25,10 +25,16 @@
  这句代码只是针对了view 的颜色给出了透明度，而不是针对view这个整体
  
 ##### 9.storyboard 自定义cell问题。
-在**storyboard** 中对collectioncell做自定义，在cell中设置 Identifier 后不需要在对cell注册，以下代码不再需要  `self.collectionView!.registerClass(StudentShowcaseCell.self, forCellWithReuseIdentifier: reuseIdentifier)`，否则将无法按照storyboard中设计的样式来初始化
+在**storyboard** 中对collectioncell做自定义，在cell中设置 Identifier 后不需要在对cell注册，以下代码不再需要  `self.collectionView!.registerClass(StudentShowcaseCell.self, forCellWithReuseIdentifier: reuseIdentifier)`，否则将无法按照storyboard中设计的样式来初始化，因为你用的是 Class 注册啊
 
 ##### 10.关于线程取消的问题
 调用NSOperation 或者thread的 cancel方法， 并不是严格意义上的线程的取消，只是把该线程的cannelled属性标记为YES状态来表示该线程即将要退出。要实现取消功能，我们需要在线程的main函数中定期检查isCancelled状态来判断是否需要退出，当isCancelled为YES的时候，我们手动退出，如果我们没有在main中检查isCancelled状态，那么调用-(void)cancel;方法将毫无意义。NSOperation 是抽象类！！！
 
 ##### 11. 使用storyboard 搭建UI连接 action的时候，出现 “Could not insert new outlet connection: Could not find any information for the class named”问题    
 可以clear 一下工程，然后去删掉Derived Data，或者删除对应类在项目中的引用，然后重新添加类文件。
+
+##### 12.[即使使用atomic 也是不安全的](http://mrpeak.cn/blog/ios-thread-safety/)
+在属性中使用atomic 进行修饰，启示只是修饰了 对应的get 和 set方法。而在多线程中，但线程的执行并不一定会按照代码的书写逻辑，不如有连着的两个for 循环，其中一个写，另一个读，就完成可能造成数据不一致。如果要保证一直，应该对执行代码做锁操作保证执行顺序。
+
+##### 13、弱引用实现原理
+弱引用的实现原理是这样，系统对于每一个有弱引用的对象，都维护一个表来记录它所有的弱引用的指针地址。这样，当一个对象的引用计数为 0 时，系统就通过这张表，找到所有的弱引用指针，继而把它们都置成 nil。这意味着有系统的开销，不可盲目使用，不然对象对象创建后就销毁了，不利于重用。
