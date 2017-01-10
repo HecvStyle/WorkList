@@ -21,7 +21,8 @@
 ##### 7.使用Jenkins做自动集成，需要去掉“自动创建scheme”选项，因为Jenkins的Xcode插件并不会自动帮你创建，所以在构建过程中，出现scheme为空的情况
 
 ##### 8. 设置父视图透明而子视图不透明的处理
- `self.view.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.7f];` 
+ `self.view.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.7f];`     
+ 
  这句代码只是针对了view 的颜色给出了透明度，而不是针对view这个整体
  
 ##### 9.storyboard 自定义cell问题。
@@ -43,3 +44,6 @@
 1、所有spec 文件应该在一个公有仓库，需要同步到 repo 中去，这样在执行 pod install & update 时候才能拉到最新tag 的源码。   
 2、开发状态可以通过主项目的podfile 配置不同的分支，或者指定本地环境，等稳定之后同步源码到私有仓库，并修改和同步对应的 spec到 公共仓库   
 3、使用subspec 指定私有库等文件组织结构，可以参考AFNetworking
+
+##### 15、[NSUserDefaults的 synchronize 方法调用问题](http://stackoverflow.com/questions/37485109/is-it-mandatory-to-call-nsuserdefaults-synchronize-method)    
+简单说了就是如果考虑到一些特殊情况下的app退出，这个时候本来还在进行plist文件的写入，那么如果不调用s ynchronize（） 方法，可能出现的问题就是这部分写入的数据丢失。如果调用了，那么就可以保证写入的成功。所以**大多数情况**下，即使没有调用synchronize 方法，也没问题。BTW，NSUserDefaults本身是提供了锁处理，排除上面因素，我们可以直接调用读写操作并保证线程安全。
