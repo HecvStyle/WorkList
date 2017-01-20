@@ -47,3 +47,6 @@
 
 ##### 15、[NSUserDefaults的 synchronize 方法调用问题](http://stackoverflow.com/questions/37485109/is-it-mandatory-to-call-nsuserdefaults-synchronize-method)    
 简单说了就是如果考虑到一些特殊情况下的app退出，这个时候本来还在进行plist文件的写入，那么如果不调用s ynchronize（） 方法，可能出现的问题就是这部分写入的数据丢失。如果调用了，那么就可以保证写入的成功。所以**大多数情况**下，即使没有调用synchronize 方法，也没问题。BTW，NSUserDefaults本身是提供了锁处理，排除上面因素，我们可以直接调用读写操作并保证线程安全。
+
+##### 16、[通过DNS映射优化网络请求](http://mrpeak.cn/ios/2016/01/22/dnsmapping/)    
+请求的域名不通过dns服务器做映射，而采用本地的方式，自己设置dns映射机制，直接使用IP地址来进行访问。（感觉这个应该是复杂的大app才用得上，小规模app 基本没想过这事）本地的映射文件，也需要从服务器定期同步。
